@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; base-uri 'none'; form-action 'none'">
+<title>Plant+</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <section id="login" class="tela ativa">
+    <form id="form-login" class="painel">
+      <h1 class="logo">🌿 Plant+</h1>
+      <p class="sub">Bem-vindo à comunidade Plant+! Aprenda a cultivar sua horta em casa.</p>
+      <label id="campo-nome" hidden>Nome<input id="nome" maxlength="40" autocomplete="name"></label>
+      <label>E-mail<input id="email" type="email" required autocomplete="email"></label>
+      <label>Senha<input id="senha" type="password" required minlength="8" autocomplete="current-password"></label>
+      <p id="erro-login" class="erro" role="alert"></p>
+      <button id="entrar" class="btn">Entrar</button>
+      <button id="alternar" type="button" class="btn claro">Criar conta</button>
+    </form>
+  </section>
+
+  <section id="feed" class="tela">
+    <header class="topo">
+      <h2 class="logo">🌿 Plant+</h2>
+      <input id="busca" type="search" placeholder="Buscar plantas" aria-label="Buscar plantas" maxlength="40">
+    </header>
+    <div id="filtros" class="filtros"></div>
+    <div id="grade" class="grade"></div>
+  </section>
+
+  <section id="detalhe" class="tela">
+    <button id="voltar" class="btn claro pequeno">Voltar</button>
+    <article class="painel largo">
+      <div id="det-midia"></div>
+      <h2 id="det-titulo"></h2>
+      <p id="det-autor" class="sub"></p>
+      <p id="det-texto"></p>
+      <div class="acoes">
+        <button id="det-curtir" class="btn claro pequeno"></button>
+        <button id="det-baixar" class="btn claro pequeno">Baixar foto</button>
+        <button id="det-comp" class="btn claro pequeno">Compartilhar</button>
+      </div>
+      <div id="det-cuidado" class="caixa"></div>
+      <h3>Comentários</h3>
+      <ul id="lista-com" class="lista"></ul>
+      <form id="form-com" class="linha">
+        <input id="comentario" maxlength="200" required placeholder="Escreva um comentário" aria-label="Comentário">
+        <button class="btn pequeno">Enviar</button>
+      </form>
+    </article>
+  </section>
+
+  <section id="postar" class="tela">
+    <form id="form-post" class="painel">
+      <h2>Postar foto</h2>
+      <label>Foto<input id="foto" type="file" accept="image/jpeg,image/png,image/webp" required></label>
+      <label>Planta<select id="post-planta"></select></label>
+      <label>Legenda<textarea id="post-texto" maxlength="200" rows="3" required></textarea></label>
+      <button class="btn">Publicar</button>
+    </form>
+  </section>
+
+  <section id="plantas" class="tela">
+    <div class="painel largo">
+      <h2>Minhas plantas</h2>
+      <p id="banner" class="banner"></p>
+      <div class="linha">
+        <select id="add-planta" aria-label="Planta"></select>
+        <button id="add-btn" class="btn pequeno">Adicionar</button>
+      </div>
+      <ul id="lista-plantas" class="lista"></ul>
+      <div class="caixa">
+        <label>Receber aviso a partir das <input id="hora" type="time" value="07:00"></label>
+        <button id="notif" class="btn claro pequeno">Ativar notificações</button>
+        <p class="sub">Os avisos funcionam com o Plant+ aberto no navegador.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="guia" class="tela">
+    <div class="painel largo">
+      <h2>Guia da horta urbana</h2>
+      <div class="caixa">
+        <strong>Melhor horário para regar</strong>
+        <p>Antes das 9h ou depois das 17h. Evite entre 11h e 15h: a água evapora e pode queimar as folhas.</p>
+      </div>
+      <h3>O que plantar agora</h3>
+      <div id="estacoes" class="filtros"></div>
+      <ul id="guia-lista" class="lista"></ul>
+      <h3>Dicas</h3>
+      <ul id="dicas" class="lista"></ul>
+    </div>
+  </section>
+</main>
+
+<nav id="menu" hidden>
+  <button data-ir="feed">Início</button>
+  <button data-ir="plantas">Plantas</button>
+  <button data-ir="postar" class="mais" aria-label="Postar foto">+</button>
+  <button data-ir="guia">Guia</button>
+  <button id="sair">Sair</button>
+</nav>
+<p id="aviso" role="status" hidden></p>
+<script src="dados.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
